@@ -5,6 +5,7 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div>
+          <h6>Movie Title</h6>
         <SearchInput />
       </div>
     );
