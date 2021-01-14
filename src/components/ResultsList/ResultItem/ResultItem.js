@@ -1,9 +1,10 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
 
-export default function ResultItem() {
+export default function ResultItem({ key, title, year }) {
     return (
-        <li>
-            ResultItem
+        <li key={key}>
+            {title} ({year}) <Button />
         </li>
     )
 }
