@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import ResultList from "../../components/ResultsList/ResultsList";
 
 import Paper from "@material-ui/core/Paper";
-import ResultItem from "../../components/ResultsList/ResultItem/ResultItem";
+import ResultItem from "../../components/ResultItem/ResultItem";
 
 export default class Results extends Component {
   state = {
