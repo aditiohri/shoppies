@@ -1,40 +1,52 @@
 import React, { Component } from "react";
 import ResultList from "../../components/ResultsList/ResultsList";
 
-import Paper from '@material-ui/core/Paper';
-
+import Paper from "@material-ui/core/Paper";
+import ResultItem from "../../components/ResultsList/ResultItem/ResultItem";
 
 export default class Results extends Component {
   state = {
     results: [],
     loading: true,
-    error: false
+    error: false,
   };
 
   componentDidMount() {
-    fetch(`http://www.omdbapi.com/?s=Lord&type=movie&apikey=${process.env.REACT_APP_APIKEY}`)
+    fetch(
+      `http://www.omdbapi.com/?s=Lord&type=movie&apikey=${process.env.REACT_APP_APIKEY}`
+    )
       .then((response) => response.json())
-      .then(movies => {
-        const fetchedMovies = []
+      .then((movies) => {
+        const fetchedMovies = [];
         for (let key in movies.Search) {
-          const { Title, Year } = movies.Search[key]
+          const { Title, Year } = movies.Search[key];
           fetchedMovies.push({
-            title: Title,
-            year: Year
-          })
+            Title,
+            Year,
+          });
         }
-        this.setState({ results: fetchedMovies, loading: false })
+        this.setState({ results: fetchedMovies, loading: false });
       })
-      .catch(error => {
-        console.log('error: ', error)
-        this.setState({ loading: false, error: true })
+      .catch((error) => {
+        this.setState({ loading: false, error: true });
       });
   }
   render() {
+    let movieList = this.props.error ? (
+      <p>There was an error searching the movie database!</p>
+    ) : (
+      <p>Loading...</p>
+    );
+
+    if (this.state.results.length > 0) {
+      movieList = this.state.results.map((movie, id) => (
+        <ResultItem key={id} title={movie.Title} year={movie.Year} />
+      ));
+    }
     return (
       <Paper>
-          <h3>Results for "inputvalue"</h3>
-        <ResultList />
+        <h3>Results for "inputvalue"</h3>
+        <ul>{movieList}</ul>
       </Paper>
     );
   }
