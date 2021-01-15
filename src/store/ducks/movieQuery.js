@@ -7,6 +7,9 @@ export const findMovieTitle = (inputValue) => ({
 
 const initialState = {
   title: "",
+  results: [],
+  loading: true,
+  error: false
 };
 
 const reducer = (state = initialState, action) => {
