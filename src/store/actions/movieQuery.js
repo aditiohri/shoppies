@@ -27,10 +27,11 @@ export const fetchMovies = (searchTitle) => {
       .then((movies) => {
         const fetchedMovies = [];
         for (let key in movies) {
-          const { Title, Year } = movies[key];
+          const { Title, Year, imdbID } = movies[key];
           fetchedMovies.push({
             Title,
             Year,
+            imdbID
           });
         }
         if (fetchedMovies.length > 0) {

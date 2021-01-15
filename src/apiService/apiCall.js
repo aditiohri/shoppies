@@ -8,7 +8,6 @@ const getMoviesByTitle = async (searchTitle) => {
         type: "movie",
       },
     });
-    console.log(response.config.params.s)
     return response.data.Search;
   } catch (error) {
     console.error(error);
