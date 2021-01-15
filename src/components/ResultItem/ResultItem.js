@@ -1,11 +1,11 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 
-export default function ResultItem({ id, title, year, onNominateMovie }) {
+export default function ResultItem({ id, movie onNominateMovie }) {
   return (
     <li key={id}>
-      {title} ({year}){" "}
-      <Button variant="outlined" size="small" onClick={onNominateMovie}>
+      {movie.title} ({movie.year}){" "}
+      <Button variant="outlined" size="small" onClick={onNominateMovie(movie)}>
         Nominate
       </Button>
     </li>
