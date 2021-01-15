@@ -39,7 +39,7 @@ export default class Results extends Component {
 
     if (this.state.results.length > 0) {
       movieList = this.state.results.map((movie, id) => (
-        <ResultItem key={id} title={movie.Title} year={movie.Year} />
+        <ResultItem id={id} title={movie.Title} year={movie.Year} />
       ));
     }
     return (

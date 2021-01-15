@@ -1,10 +1,13 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
+import React from "react";
+import Button from "@material-ui/core/Button";
 
-export default function ResultItem({ key, title, year }) {
-    return (
-        <li key={key}>
-            {title} ({year}) <Button variant="outlined" size="small">Nominate</Button>
-        </li>
-    )
+export default function ResultItem({ id, title, year }) {
+  return (
+    <li key={id}>
+      {title} ({year}){" "}
+      <Button variant="outlined" size="small">
+        Nominate
+      </Button>
+    </li>
+  );
 }

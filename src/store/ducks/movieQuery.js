@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
     case FIND_MOVIE_TITLE:
         return {
             ...state,
-            title: action.inputValue
+            title: action.titleToFind
         }
     default:
       return state;
