@@ -6,13 +6,14 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 
 export default function Search() {
+  const inputValue = useSelector((state) => state.movies.title);
+  
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     dispatch(actions.saveMovieTitle(e.target.value));
+    dispatch(actions.fetchMovies(inputValue));
   };
-
-  const inputValue = useSelector((state) => state.movies.title);
 
   return (
     <>

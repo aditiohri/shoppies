@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
         movies: state.movies.filter((movie) => movie.id !== action.id),
       };
     case actionTypes.FETCH_MOVIE_INIT:
-      return; // dispatch to saga
+      return state;
     case actionTypes.FETCH_MOVIE_SUCCESS:
       return {
         ...state,

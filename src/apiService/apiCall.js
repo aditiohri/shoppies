@@ -1,8 +1,8 @@
-import api from "./api";
+import instance from "./api";
 
 const getMoviesByTitle = async (searchTitle) => {
   try {
-    const response = await api.get("", {
+    const response = await instance.get("", {
       params: {
         s: searchTitle,
         type: "movie",
@@ -14,5 +14,4 @@ const getMoviesByTitle = async (searchTitle) => {
   }
 };
 
-
-export default getMoviesByTitle
+export default getMoviesByTitle;
