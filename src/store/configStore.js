@@ -1,18 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
 
-import nominationsReducer from "./ducks/nominations";
-import movieQueryReducer from "./ducks/movieQuery";
-import movieResultsReducer from "./ducks/movieResults";
+import moviesReducer from "./reducers/movies";
 
 const rootReducer = combineReducers({
-  nominations: nominationsReducer,
-  movieQuery: movieQueryReducer,
-  movieResults: movieResultsReducer,
+  movies: moviesReducer,
 });
 
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;

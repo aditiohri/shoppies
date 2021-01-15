@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
-import { findMovieTitle } from "../../store/ducks/movieQuery";
+import { saveMovieTitle } from "../../store/ducks/movieResults";
 
 export default function Search() {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    dispatch(findMovieTitle(e.target.value));
+    dispatch(saveMovieTitle(e.target.value));
   };
 
-  const inputValue = useSelector((state) => state.movieQuery.title);
+  const inputValue = useSelector((state) => state.movieResults.title);
 
   return (
     <>
