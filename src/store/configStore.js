@@ -1,8 +1,8 @@
-import { createStore, combineReducer } from "redux";
+import { createStore, combineReducers } from "redux";
 import nominationsReducer from "./ducks/nominations";
 import movieQueryReducer from "./ducks/movieQuery";
 
-const reducer = combineReducer({
+const reducer = combineReducers({
   nominations: nominationsReducer,
   movieQuery: movieQueryReducer,
 });
