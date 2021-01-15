@@ -14,6 +14,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         title: action.titleToFind,
+        loading: true
       };
     case actionTypes.ADD_MOVIE:
       return {
@@ -41,6 +42,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         error: true,
+        loading: false
       };
     default:
       return state;
