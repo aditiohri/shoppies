@@ -21,7 +21,7 @@ class Results extends Component {
     if (this.props.results.length > 0) {
       header = <h3>Results for "{this.props.searchTitle}"</h3>;
       movieList = this.props.results.map((movie, id) => (
-        <ResultItem key={id} id={id} movie={movie} onNominateMovie={this.props.onNominateMovie} />
+        <ResultItem key={id} movie={movie} onNominateMovie={this.props.onNominateMovie} />
       ));
     }
 
@@ -42,7 +42,6 @@ const mapStateToProps = (state) => {
   return {
     searchTitle: state.movies.title,
     results: state.movies.results,
-    nominations: state.movies.nominations,
     error: state.movies.error,
     loading: state.movies.loading,
   };
