@@ -13,7 +13,7 @@ class Results extends Component {
 
   componentDidMount() {
     fetch(
-      `http://www.omdbapi.com/?s=Lord&type=movie&apikey=${process.env.REACT_APP_APIKEY}`
+      `http://www.omdbapi.com/?s=Lord&type=movie&apikey=${process.env.REACT_APP_API_KEY}`
     )
       .then((response) => response.json())
       .then((movies) => {
