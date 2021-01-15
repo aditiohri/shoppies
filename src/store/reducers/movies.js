@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ADD_MOVIE:
       return {
         ...state,
-        movies: state.movies.concat(action.movie),
+        nominations: state.nominations.concat(action.movie),
       };
     case actionTypes.REMOVE_MOVIE:
       return {
