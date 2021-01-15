@@ -20,7 +20,7 @@ class Results extends Component {
     }
     return (
       <Paper>
-        <h3>Results for {this.props.searchTitle}</h3>
+        <h3>Results for "{this.props.searchTitle}"</h3>
         <ul>{movieList}</ul>
       </Paper>
     );
