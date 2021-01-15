@@ -54,7 +54,7 @@ class Results extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    searchTitle: state.movieQuery.title
+    searchTitle: state.movies.title
   }
 }
 
