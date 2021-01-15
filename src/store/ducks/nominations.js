@@ -1,19 +1,19 @@
 const ADD_MOVIE = "ADD_MOVIE";
 const REMOVE_MOVIE = "REMOVE_MOVIE";
 
-export const addMovie = (title) => ({
+export const addMovie = (movie) => ({
   type: ADD_MOVIE,
-  movieTitle: title,
+  movie: movie
 });
 
-export const removeMovie = (title, year) => ({
+export const removeMovie = (id) => ({
   type: REMOVE_MOVIE,
-  title: title,
-  year: year
+  id: id
+  
 });
 
 const initialState = {
-  nominations: []
+  movies: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,15 +21,12 @@ const reducer = (state = initialState, action) => {
     case ADD_MOVIE:
       return {
           ...state, 
-    nominations: state.nominations.concat({
-        title: action.title,
-        year: action.year
-    }) };
+    movies: state.movies.concat(action.movie) };
     case REMOVE_MOVIE:
       return {
           ...state,
-          nominations: state.nominations.filter(movie => (
-              movie.title !== action.title
+          movies: state.movies.filter(movie => (
+              movie.id !== action.id
           ))
       };
     default:
