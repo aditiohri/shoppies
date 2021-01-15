@@ -1,16 +1,17 @@
 import * as actionTypes from "./actionTypes";
 import getMoviesByTitle from "../../apiService/apiCall";
 
-export const fetchMovieInit = () => {
-  return {
-    type: actionTypes.FETCH_MOVIE_SUCCESS,
-  };
-};
-
 export const fetchMovieSuccess = (results) => {
   return {
     type: actionTypes.FETCH_MOVIE_SUCCESS,
     results: results,
+  };
+};
+
+export const fetchMovieFail = (results) => {
+  return {
+    type: actionTypes.FETCH_MOVIE_FAIL,
+    results: results
   };
 };
 
@@ -22,7 +23,6 @@ export const fetchMovieError = () => {
 
 export const fetchMovies = (searchTitle) => {
   return (dispatch) => {
-    dispatch(fetchMovieInit());
     getMoviesByTitle(searchTitle)
       .then((movies) => {
         const fetchedMovies = [];
@@ -33,10 +33,14 @@ export const fetchMovies = (searchTitle) => {
             Year,
           });
         }
-        dispatch(fetchMovieSuccess(fetchedMovies));
+        if (fetchedMovies.length > 0) {
+          return dispatch(fetchMovieSuccess(fetchedMovies));
+        } else {
+          return dispatch(fetchMovieFail(fetchedMovies));
+        }
       })
       .catch((err) => {
-        dispatch(fetchMovieError(err));
+        return fetchMovieError();
       });
   };
 };

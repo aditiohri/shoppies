@@ -5,22 +5,32 @@ import Paper from "@material-ui/core/Paper";
 import ResultItem from "../../components/ResultItem/ResultItem";
 
 class Results extends Component {
-
   render() {
-    let movieList = this.props.error ? (
-      <p>There was an error searching the movie database!</p>
-    ) : (
-      <p>Loading...</p>
-    );
+    let movieList;
+    let header;
 
-    if (this.props.results) {
+    if (this.props.loading === true) {
+      header = <h3>Let's find your favorite movies!</h3>;
+    }
+
+    if (this.props.error === true) {
+      header = <h3>There was an error searching the movie database!</h3>;
+    }
+
+    if (this.props.results.length > 0) {
+      header = <h3>Results for "{this.props.searchTitle}"</h3>;
       movieList = this.props.results.map((movie, id) => (
-        <ResultItem id={id} title={movie.Title} year={movie.Year} />
+        <ResultItem key={id} id={id} title={movie.Title} year={movie.Year} />
       ));
     }
+
+    if (this.props.loading === false) {
+      header = <h3>There are no results for "{this.props.searchTitle}"</h3>;
+    }
+
     return (
       <Paper>
-        <h3>Results for "{this.props.searchTitle}"</h3>
+        {header}
         <ul>{movieList}</ul>
       </Paper>
     );
@@ -30,8 +40,10 @@ class Results extends Component {
 const mapStateToProps = (state) => {
   return {
     searchTitle: state.movies.title,
-    results: state.movies.results
-  }
-}
+    results: state.movies.results,
+    error: state.movies.error,
+    loading: state.movies.loading,
+  };
+};
 
 export default connect(mapStateToProps)(Results);

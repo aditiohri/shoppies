@@ -25,13 +25,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         movies: state.movies.filter((movie) => movie.id !== action.id),
       };
-    case actionTypes.FETCH_MOVIE_INIT:
-      return state;
     case actionTypes.FETCH_MOVIE_SUCCESS:
       return {
         ...state,
         results: action.results,
-        loading: false,
+        loading: true
+      };
+    case actionTypes.FETCH_MOVIE_FAIL:
+      return {
+        ...state,
+        results: action.results,
+        loading: false
       };
     case actionTypes.FETCH_MOVIE_ERROR:
       return {
