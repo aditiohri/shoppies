@@ -1,5 +1,10 @@
 import { createStore, combineReducer } from "redux";
+import nominationsReducer from "./ducks/nominations";
 
-const store = createStore();
+const reducer = combineReducer({
+    nominations: nominationsReducer
+})
 
-export default store
+const store = createStore(reducer);
+
+export default store;
