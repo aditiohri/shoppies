@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Paper from "@material-ui/core/Paper";
 import ResultItem from "../../components/ResultItem/ResultItem";
 
-export default class Results extends Component {
+class Results extends Component {
   state = {
     results: [],
     loading: true,
@@ -12,7 +13,7 @@ export default class Results extends Component {
 
   componentDidMount() {
     fetch(
-      `http://www.omdbapi.com/?s=Lord&type=movie&apikey=${process.env.REACT_APP_APIKEY}`
+      `http://www.omdbapi.com/?s=${this.props.searchTitle}&type=movie&apikey=${process.env.REACT_APP_APIKEY}`
     )
       .then((response) => response.json())
       .then((movies) => {
@@ -31,7 +32,7 @@ export default class Results extends Component {
       });
   }
   render() {
-    let movieList = this.props.error ? (
+    let movieList = this.state.error ? (
       <p>There was an error searching the movie database!</p>
     ) : (
       <p>Loading...</p>
@@ -44,9 +45,17 @@ export default class Results extends Component {
     }
     return (
       <Paper>
-        <h3>Results for "inputvalue"</h3>
+        <h3>Results for {this.props.searchTitle}</h3>
         <ul>{movieList}</ul>
       </Paper>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    searchTitle: state.movieQuery.title
+  }
+}
+
+export default connect(mapStateToProps)(Results);
