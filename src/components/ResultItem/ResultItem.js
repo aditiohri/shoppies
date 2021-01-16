@@ -8,7 +8,6 @@ export default function ResultItem({ movie, onNominateMovie, disabled }) {
   return (
     <li key={imdbID}>
       {Title} ({Year}){" "}
-      {console.log(disabled)}
       <Button
         variant="outlined"
         size="small"
