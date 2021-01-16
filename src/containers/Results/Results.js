@@ -21,7 +21,11 @@ class Results extends Component {
     if (this.props.results.length > 0) {
       header = <h3>Results for "{this.props.searchTitle}"</h3>;
       movieList = this.props.results.map((movie, id) => (
-        <ResultItem key={id} movie={movie} onNominateMovie={this.props.onNominateMovie} />
+        <ResultItem
+          key={id}
+          movie={movie}
+          onNominateMovie={this.props.onNominateMovie}
+        />
       ));
     }
 

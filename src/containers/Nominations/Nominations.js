@@ -14,7 +14,7 @@ export default function Nominations() {
   if (nominations.length > 0) {
     nominationsTitle = <h3>Nominations</h3>;
     nominationsList = nominations.map((movie, id) => (
-      <NominationItem movie={movie} key={id + movie.id} />
+      <NominationItem movie={movie} key={id + movie["imdbID"]} />
     ));
   } else {
     nominationsList = null;
