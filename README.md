@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+A simple movie nomination app for the Shopify Challenge.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), Redux and Material UI.
 
 ## Available Scripts
 
