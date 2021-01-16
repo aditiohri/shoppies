@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
 
 import Paper from "@material-ui/core/Paper";
 import ResultItem from "../../components/ResultItem/ResultItem";
-import * as actions from "../../store/actions/index";
 
 class Results extends Component {
   render() {

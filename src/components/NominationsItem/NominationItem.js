@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
-export default function NominationItem({ movie }) {
-
-    const {imdbID, Title, Year} = movie; 
+export default function NominationItem({ movie, handleRemoveNomination }) {
+  
+    const { imdbID, Title, Year } = movie;
 
   return (
     <li key={imdbID}>
@@ -11,7 +11,7 @@ export default function NominationItem({ movie }) {
       <Button
         variant="outlined"
         size="small"
-        onClick={() => console.log("NominationItem: ", movie)}
+        onClick={() => handleRemoveNomination(imdbID)}
       >
         Remove
       </Button>

@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.REMOVE_MOVIE:
       return {
         ...state,
-        movies: state.movies.filter((movie) => movie.id !== action.id),
+        nominations: state.nominations.filter((movie) => movie["imdbID"] !== action.imdbID),
       };
     case actionTypes.FETCH_MOVIE_SUCCESS:
       return {

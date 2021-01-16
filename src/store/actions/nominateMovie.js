@@ -5,7 +5,7 @@ export const addMovie = (movie) => ({
     movie: movie,
   });
   
-  export const removeMovie = (id) => ({
+  export const removeMovie = (imdbID) => ({
     type: actionTypes.REMOVE_MOVIE,
-    id: id,
+    imdbID: imdbID,
   });
