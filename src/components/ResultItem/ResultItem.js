@@ -9,10 +9,10 @@ export default function ResultItem({ movie, onNominateMovie, disabled }) {
     <li key={imdbID}>
       {Title} ({Year}){" "}
       <Button
-        variant="outlined"
-        size="small"
         onClick={() => onNominateMovie(movie)}
         disabled={disabled}
+        variant="outlined"
+        color="primary"
       >
         Nominate
       </Button>

@@ -8,12 +8,17 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
+    
   },
   results: {
     position: "sticky",
     paddingLeft: "1rem",
     paddingRight: "1rem",
-    height: '80vh'
+    height: "80vh",
+    backgroundColor: theme.palette.secondary.main,
+  },
+  div: {
+    backgroundColor: theme.palette.secondary.main,
   },
 }));
 
@@ -30,11 +35,17 @@ function App() {
       <Grid item xs={12}>
         <Search />
       </Grid>
-      <Grid container justify="space-between" alignItems="center" spacing={3} className={classes.results}>
-        <Grid item xs={12} sm={6}>
+      <Grid
+        container
+        justify="space-between"
+        alignItems="center"
+        spacing={3}
+        className={classes.results}
+      >
+        <Grid item xs={12} sm={6} className={classes.div}>
           <Results />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} className={classes.div}>
           <Nominations />
         </Grid>
       </Grid>
