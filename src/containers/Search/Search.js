@@ -5,14 +5,15 @@ import * as actions from "../../store/actions/index";
 import { Paper, TextField, makeStyles, InputAdornment } from "@material-ui/core";
 import SearchIcon from '@material-ui/icons/Search';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( theme => ({
   root: {
+    backgroundColor: theme.palette.secondary.light,
     position: "fixed",
     top: "0",
     width: "100%",
     zIndex: "100",
   },
-});
+}));
 
 export default function Search() {
   const classes = useStyles();
