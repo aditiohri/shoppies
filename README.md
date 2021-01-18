@@ -1,4 +1,4 @@
-##[Shoppies](https://blissful-thompson-f20cab.netlify.app/)
+## [Shoppies](https://blissful-thompson-f20cab.netlify.app/)
 
 A simple movie nomination app for the Shopify Challenge. Nominate five movies for a fun surprise! 
 
