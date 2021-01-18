@@ -1,4 +1,6 @@
-A simple movie nomination app for the Shopify Challenge.
+## [Shoppies](https://blissful-thompson-f20cab.netlify.app/)
+
+A simple movie nomination app for the Shopify Challenge. Nominate five movies for a fun surprise! 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), Redux and Material UI.
 
