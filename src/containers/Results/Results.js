@@ -1,55 +1,58 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
 import Paper from "@material-ui/core/Paper";
 import ResultItem from "../../components/ResultItem/ResultItem";
 
-class Results extends Component {
-  render() {
-    const disabledInfo = this.props.nominations.map((movie) => movie["imdbID"]);
+function Results({
+  loading,
+  error,
+  results,
+  searchTitle,
+  nominations,
+  onNominateMovie,
+}) {
+  
+  let movieList;
+  let header;
+  const disabledInfo = nominations.map((movie) => movie["imdbID"]);
 
-    let movieList;
-    let header;
-
-    if (this.props.loading === true) {
-      header = <h3>Let's find your favorite movies!</h3>;
-    }
-
-    if (this.props.error === true) {
-      header = <h3>There was an error searching the movie database!</h3>;
-    }
-
-    if (this.props.results.length > 0) {
-      header = <h3>Results for "{this.props.searchTitle}"</h3>;
-      movieList = this.props.results.map((movie, id) => {
-        
-        const isDisabled =
-          disabledInfo.find((id) => id === movie["imdbID"]) ===
-            movie["imdbID"] || disabledInfo.length === 5;
-
-        return (
-          <ResultItem
-            key={id}
-            movie={movie}
-            onNominateMovie={this.props.onNominateMovie}
-            disabled={isDisabled}
-          />
-        );
-      });
-    }
-
-    if (this.props.loading === false) {
-      header = <h3>There are no results for "{this.props.searchTitle}"</h3>;
-    }
-
-    return (
-      <Paper>
-        {header}
-        <ul>{movieList}</ul>
-      </Paper>
-    );
+  if (loading === true) {
+    header = <h3>Let's find your favorite movies!</h3>;
   }
+
+  if (error === true) {
+    header = <h3>There was an error searching the movie database!</h3>;
+  }
+
+  if (results.length > 0) {
+    header = <h3>Results for "{searchTitle}"</h3>;
+    movieList = results.map((movie, id) => {
+      const isDisabled =
+        disabledInfo.includes(movie["imdbID"]) || disabledInfo.length === 5;
+
+      return (
+        <ResultItem
+          key={id}
+          movie={movie}
+          onNominateMovie={onNominateMovie}
+          disabled={isDisabled}
+        />
+      );
+    });
+  }
+
+  if (loading === false) {
+    header = <h3>There are no results for "{searchTitle}"</h3>;
+  }
+
+  return (
+    <Paper>
+      {header}
+      <ul>{movieList}</ul>
+    </Paper>
+  );
 }
 
 const mapStateToProps = (state) => {
