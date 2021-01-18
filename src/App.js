@@ -7,29 +7,36 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "100px",
-    height: "100vh",
+    position: "fixed",
+    height: "80vh",
+    top: "8rem",
+    overflow: "auto",
+    paddingLeft: '1rem',
+    paddingRight: '1rem'
   },
 }));
 
 function App() {
   const classes = useStyles();
   return (
-    <Grid
-      className={classes.root}
-      container
-      justify="center"
-      alignContent="center"
-      spacing={2}
-    >
+    <Grid justify="center" alignItems="center" container spacing={2}>
       <Grid item xs={12} sm={12}>
         <Search />
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <Results />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Nominations />
+      <Grid
+        container
+        justify="space-between"
+        alignItems="center"
+        spacing={3}
+        className={classes.root}
+        mx="auto"
+      >
+        <Grid item xs={12} sm={6}>
+          <Results />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Nominations />
+        </Grid>
       </Grid>
     </Grid>
   );

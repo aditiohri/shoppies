@@ -13,13 +13,17 @@ function Results({
   nominations,
   onNominateMovie,
 }) {
-  
+
   let movieList;
   let header;
   const disabledInfo = nominations.map((movie) => movie["imdbID"]);
 
   if (loading === true) {
     header = <h3>Let's find your favorite movies!</h3>;
+  }
+
+  if (loading === false) {
+    header = <h3>There are no results for "{searchTitle}"</h3>;
   }
 
   if (error === true) {
@@ -43,9 +47,7 @@ function Results({
     });
   }
 
-  if (loading === false) {
-    header = <h3>There are no results for "{searchTitle}"</h3>;
-  }
+
 
   return (
     <Paper>
