@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-import { Paper, TextField, makeStyles } from "@material-ui/core";
+import { Paper, TextField, makeStyles, InputAdornment } from "@material-ui/core";
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles({
   root: {
@@ -30,6 +31,13 @@ export default function Search() {
       <TextField
         variant="outlined"
         label="Movie Title"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          )
+        }}
         onChange={handleChange}
         onInput={handleInput}
         value={useSelector((state) => state.movies.title)}
