@@ -2,18 +2,29 @@ import React from "react";
 import {
   Button,
   Dialog,
-  DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
   Slide,
+  makeStyles,
 } from "@material-ui/core";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2)
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(1),
+  },
+}));
+
 export default function Banner({ open, handleClose }) {
+  const classes = useStyles();
   return (
     <div>
       <Dialog
@@ -22,7 +33,10 @@ export default function Banner({ open, handleClose }) {
         keepMounted
         onClick={handleClose}
       >
-        <DialogTitle onClose={handleClose}>Congratulations!!!</DialogTitle>
+        <DialogTitle onClose={handleClose} className={classes.root}>
+          Congratulations!!!
+          <Button onClick={handleClose} className={classes.closeButton}>X</Button>
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>YOU NOMINATED 5 FILMS!!!</DialogContentText>
           <iframe
@@ -31,18 +45,10 @@ export default function Banner({ open, handleClose }) {
             width="480"
             height="480"
             frameBorder="0"
-            class="giphy-embed"
+            className="giphy-embed"
             allowFullScreen
           ></iframe>
-          <p>
-            <a href="https://giphy.com/gifs/nbcworldofdance-cute-fun-world-of-dance-fnK0jeA8vIh2QLq3IZ">
-              via GIPHY
-            </a>
-          </p>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>X</Button>
-        </DialogActions>
       </Dialog>
     </div>
   );
