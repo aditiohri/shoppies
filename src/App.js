@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
+    backgroundColor: theme.palette.secondary.main,
     
   },
   results: {
@@ -15,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "1rem",
     paddingRight: "1rem",
     height: "80vh",
-    backgroundColor: theme.palette.secondary.main,
   },
   div: {
     backgroundColor: theme.palette.secondary.main,
@@ -27,6 +27,7 @@ function App() {
   return (
     <Grid
       justify="center"
+      alignContent="center"
       alignItems="center"
       container
       spacing={2}
@@ -37,8 +38,9 @@ function App() {
       </Grid>
       <Grid
         container
-        justify="space-between"
-        alignItems="center"
+        // justify="center"
+        // alignContent="center"
+        // alignItems="center"
         spacing={3}
         className={classes.results}
       >

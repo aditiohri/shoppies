@@ -8,7 +8,6 @@ import SearchIcon from '@material-ui/icons/Search';
 const useStyles = makeStyles( theme => ({
   root: {
     backgroundColor: theme.palette.secondary.light,
-    position: "fixed",
     top: "0",
     width: "100%",
     zIndex: "100",
